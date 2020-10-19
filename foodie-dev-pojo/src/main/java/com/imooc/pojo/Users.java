@@ -1,6 +1,9 @@
 package com.imooc.pojo;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class Users {
@@ -18,6 +21,7 @@ public class Users {
     /**
      * 密码 密码
      */
+    @JsonIgnore
     private String password;
 
     /**
@@ -28,6 +32,7 @@ public class Users {
     /**
      * 真实姓名
      */
+    @JsonIgnore
     private String realname;
 
     /**
