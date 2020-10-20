@@ -88,12 +88,23 @@ public class PassportController {
             return IMOOCJSONResult.errorMsg("用户名或密码不正确");
         }
 
-        userResult=setNullProprty(userResult);
+        Users userResult2=setNullProprty(userResult);
         CookieUtils.setCookie(request,reponse,"user",
-                JsonUtils.objectToJson(userResult),true);
+                JsonUtils.objectToJson(userResult2),true);
 
-        return IMOOCJSONResult.ok(setNullProprty(userResult));
+        return IMOOCJSONResult.ok(userResult2);
     }
+
+    @ApiOperation(value = "用户退出登录",notes = "用户退出登录",httpMethod = "POST")
+    @PostMapping("/logout")
+    public IMOOCJSONResult logout(@RequestParam String userId,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response){
+        //清楚用户的相关信息的Cookie
+        CookieUtils.deleteCookie(request,response,"user");
+        return IMOOCJSONResult.ok();
+    }
+
 
     private Users setNullProprty(Users userResult){
         userResult.setPassword(null);

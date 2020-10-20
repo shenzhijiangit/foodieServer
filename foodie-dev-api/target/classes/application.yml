@@ -1,5 +1,15 @@
 ############################################################
 #
+# web访问端口号  约定：8088
+#
+############################################################
+server:
+  port: 8088
+  tomcat:
+    uri-encoding: UTF-8
+  max-http-header-size: 80KB
+############################################################
+#
 # 配置数据源信息
 #
 ############################################################
@@ -27,6 +37,8 @@ spring:
 mybatis:
   type-aliases-package: com.imooc.pojo # 所有POJO类所在包路径
   mapper-locations: classpath:mapper/*.xml # mapper映射文件
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 ############################################################
 #
@@ -38,3 +50,8 @@ mapper:
   mappers: com.imooc.my.mapper.MyMapper
   not-empty: false
   identity: MYSQL
+
+# 分页插件配置
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
