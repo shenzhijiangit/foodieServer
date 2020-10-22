@@ -10,8 +10,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan(basePackages = "com.imooc.mapper")
 //扫描所有包以及组件包
 @ComponentScan(basePackages = {"org.n3r.idworker","com.imooc"})
-public class application {
+public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(application.class,args);
+        SpringApplication.run(Application.class,args);
     }
 }
