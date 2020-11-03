@@ -7,23 +7,23 @@ public interface CenterUserService {
 
     /**
      * 根据用户id查询用户信息
-     * @param userId
-     * @return
+     * @param userId 用户ID
+     * @return 返回查询过后的用户信息
      */
-    public Users queryUserInfo(String userId);
+     Users queryUserInfo(String userId);
 
     /**
      * 修改用户信息
-     * @param userId
-     * @param centerUserBO
+     * @param userId 用户ID
+     * @param centerUserBO 返回用户的数据库实体
      */
-    public Users updateUserInfo(String userId, CenterUserBO centerUserBO);
+     Users updateUserInfo(String userId, CenterUserBO centerUserBO);
 
     /**
      * 用户头像更新
-     * @param userId
-     * @param faceUrl
-     * @return
+     * @param userId 用户ID
+     * @param faceUrl 更新的头像URL
+     * @return 返回用户信息
      */
-    public Users updateUserFace(String userId, String faceUrl);
+     Users updateUserFace(String userId, String faceUrl);
 }

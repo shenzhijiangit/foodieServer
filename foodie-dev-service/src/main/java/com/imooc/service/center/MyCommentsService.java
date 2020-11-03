@@ -10,26 +10,26 @@ public interface MyCommentsService {
 
     /**
      * 根据订单id查询关联的商品
-     * @param orderId
-     * @return
+     * @param orderId 订单ID
+     * @return 订单信息
      */
-    public List<OrderItems> queryPendingComment(String orderId);
+     List<OrderItems> queryPendingComment(String orderId);
 
     /**
      * 保存用户的评论
-     * @param orderId
-     * @param userId
-     * @param commentList
+     * @param orderId 订单ID
+     * @param userId 用户ID
+     * @param commentList 评论信息
      */
-    public void saveComments(String orderId, String userId, List<OrderItemsCommentBO> commentList);
+     void saveComments(String orderId, String userId, List<OrderItemsCommentBO> commentList);
 
 
     /**
      * 我的评价查询 分页
-     * @param userId
-     * @param page
-     * @param pageSize
+     * @param userId 用户ID
+     * @param page 分页
+     * @param pageSize 分页大小
      * @return
      */
-    public PagedGridResult queryMyComments(String userId, Integer page, Integer pageSize);
+     PagedGridResult queryMyComments(String userId, Integer page, Integer pageSize);
 }

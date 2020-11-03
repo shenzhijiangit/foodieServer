@@ -26,19 +26,19 @@ public class AddressController {
      * 4. 修改收货地址
      * 5. 设置默认地址
      */
+    private AddressService addressService;
 
     @Autowired
-    private AddressService addressService;
+    public AddressController(AddressService addressService) {
+        this.addressService = addressService;
+    }
 
     @ApiOperation(value = "根据用户id查询收货地址列表", notes = "根据用户id查询收货地址列表", httpMethod = "POST")
     @PostMapping("/list")
-    public IMOOCJSONResult list(
-            @RequestParam String userId) {
-
+    public IMOOCJSONResult list(@RequestParam String userId) {
         if (StringUtils.isBlank(userId)) {
             return IMOOCJSONResult.errorMsg("");
         }
-
         List<UserAddress> list = addressService.queryAll(userId);
         return IMOOCJSONResult.ok(list);
     }

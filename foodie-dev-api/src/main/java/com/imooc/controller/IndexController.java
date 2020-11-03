@@ -24,10 +24,14 @@ import java.util.List;
 @RequestMapping("index")
 public class IndexController {
 
-    @Autowired
     private CarouselService carouselService;
-    @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    public IndexController(CarouselService carouselService, CategoryService categoryService) {
+        this.carouselService = carouselService;
+        this.categoryService = categoryService;
+    }
 
     @ApiOperation(value = "获取首页轮播图列表",notes = "获取首页轮播图列表",httpMethod = "GET")
     @GetMapping("/carousel")

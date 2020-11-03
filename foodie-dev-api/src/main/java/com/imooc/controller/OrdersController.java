@@ -22,19 +22,24 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 @Api(value = "订单相关", tags = {"订单相关的api接口"})
 @RequestMapping("orders")
 @RestController
 public class OrdersController extends BaseController {
 
-    final static Logger logger = LoggerFactory.getLogger(OrdersController.class);
+    private final static Logger logger = LoggerFactory.getLogger(OrdersController.class);
 
-    @Autowired
     private OrderService orderService;
 
-    @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    public OrdersController(OrderService orderService, RestTemplate restTemplate) {
+        this.orderService = orderService;
+        this.restTemplate = restTemplate;
+    }
 
     @ApiOperation(value = "用户下单", notes = "用户下单", httpMethod = "POST")
     @PostMapping("/create")
@@ -43,12 +48,10 @@ public class OrdersController extends BaseController {
             HttpServletRequest request,
             HttpServletResponse response) {
 
-        if (submitOrderBO.getPayMethod() != PayMethod.WEIXIN.type
-            && submitOrderBO.getPayMethod() != PayMethod.ALIPAY.type ) {
+        if (PayMethod.WEIXIN.type.equals(submitOrderBO.getPayMethod())
+            &&PayMethod.ALIPAY.type.equals(submitOrderBO.getPayMethod())) {
             return IMOOCJSONResult.errorMsg("支付方式不支持！");
         }
-
-//        System.out.println(submitOrderBO.toString());
 
         // 1. 创建订单
         OrderVO orderVO = orderService.createOrder(submitOrderBO);
@@ -83,7 +86,16 @@ public class OrdersController extends BaseController {
                 restTemplate.postForEntity(paymentUrl,
                                             entity,
                                             IMOOCJSONResult.class);
-        IMOOCJSONResult paymentResult = responseEntity.getBody();
+//        IMOOCJSONResult paymentResult = responseEntity.getBody();
+
+        Optional<IMOOCJSONResult> optional =Optional.ofNullable(responseEntity.getBody());
+        //判空指针异常
+
+        IMOOCJSONResult paymentResult = optional.orElseGet(()->{
+            logger.error("空指针异常，调用接口用户下单出错");
+            return IMOOCJSONResult.errorMsg("空指针异常，调用接口用户下单出错");
+        });
+
         if (paymentResult.getStatus() != 200) {
             logger.error("发送错误：{}", paymentResult.getMsg());
             return IMOOCJSONResult.errorMsg("支付中心订单创建失败，请联系管理员！");

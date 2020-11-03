@@ -33,7 +33,7 @@ public class Swagger2 {
         return new ApiInfoBuilder()
                 .title("天天吃货，电商平台接口API")
                 .contact(new Contact("imooc",
-                        "https://www.baidu.com",
+                        "http://www.shenzhijian.site",
                         "780974941@qq.com"))
                 .description("电商购物平台网站提供API文档")
                 .version("1.0.0")

@@ -8,8 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StuFooController {
 
-    @Autowired
+
     private StuService stuService;
+
+    @Autowired
+    public StuFooController(StuService stuService) {
+        this.stuService = stuService;
+    }
+
     @GetMapping("/getStu")
     public Object getStu(int id){
         return stuService.getStuInfo(id);

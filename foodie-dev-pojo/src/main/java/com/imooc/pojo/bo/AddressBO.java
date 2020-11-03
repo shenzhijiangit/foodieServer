@@ -4,9 +4,7 @@ package com.imooc.pojo.bo;
  * 用户新增或修改地址的BO
  */
 public class AddressBO {
-
     private String addressId;
-
     private String userId;
     private String receiver;
     private String mobile;
