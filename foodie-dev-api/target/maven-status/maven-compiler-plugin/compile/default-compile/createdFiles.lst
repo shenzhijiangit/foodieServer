@@ -7,6 +7,7 @@ com\imooc\config\CorsConfig.class
 com\imooc\aspect\ServiceLogAspect.class
 META-INF\spring-configuration-metadata.json
 com\imooc\controller\PassportController.class
+com\imooc\controller\RedisController.class
 com\imooc\Application.class
 com\imooc\controller\IndexController.class
 com\imooc\controller\AddressController.class

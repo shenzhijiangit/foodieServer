@@ -15,8 +15,6 @@ public class CorsConfig {
     public CorsFilter corsFilter(){
         // 1. 添加CORS配置信息
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("http://localhost:8080");
-        config.addAllowedOrigin("http://123.57.129.107:8088");
         //开放所有端口，允许所有连接地址访问
         config.addAllowedOrigin("*");
         //设置是否允许发送Cookie信息

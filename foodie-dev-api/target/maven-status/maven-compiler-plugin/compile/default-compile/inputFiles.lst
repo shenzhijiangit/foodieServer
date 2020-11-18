@@ -11,6 +11,7 @@ D:\workSpace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\IndexC
 D:\workSpace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\config\OrderJob.java
 D:\workSpace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\ShopcatController.java
 D:\workSpace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\OrdersController.java
+D:\workSpace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\RedisController.java
 D:\workSpace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\BaseController.java
 D:\workSpace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\resource\FileUpload.java
 D:\workSpace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\exception\CustomExceptionHandler.java
